@@ -28,5 +28,5 @@ use App\Http\Controllers\ChatGemmaController;
 
 Route::get('/chat-gemma', [ChatGemmaController::class, 'index'])->name('chat-gemma')->middleware('auth');
 
-
+Route::post('/chat', [ChatGemmaController::class, 'sendMessage'])->name('chat.sendMessage')->middleware('auth');
 
