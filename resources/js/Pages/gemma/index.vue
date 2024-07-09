@@ -44,6 +44,10 @@ const sendMessage = () => {
         <div class="px-2 py-12">
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <!-- CHAT QUE SE VE  -->
+                <div class="p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300" role="alert">
+                    <span class="font-black">IMPORTANTE : </span> el codigo html puede no generarse en la respuesta del modelo, el modelo genera texto.
+                </div>
+                
                 <div class="px-4 pb-8 overflow-hidden bg-white shadow-xl dark:bg-gray-800 sm:rounded-lg">
                     <div class="flex items-start justify-end gap-2.5 py-4 pb-4" v-if="input_text">
                         <div class="flex flex-col w-full max-w-[620px] leading-1.5 p-4 border-gray-200 bg-gray-100 rounded-bl-xl rounded-br-xl rounded-tl-xl dark:bg-gray-700 text-right">
@@ -69,11 +73,11 @@ const sendMessage = () => {
                                 <span class="text-sm font-semibold text-gray-900 dark:text-white">Modelo Gemma</span>
                                 <span class="text-sm font-normal text-gray-500 dark:text-gray-400">11:46</span>
                             </div>
-                            <p class="text-sm font-normal py-2.5 text-gray-900 dark:text-white">
-                                {{ model_output }}
+                            <p class="text-sm font-normal py-2.5 text-gray-900 dark:text-white" v-html="model_output.replace(/\n/g, '<br>')">
                             </p>
                         </div>
                     </div>
+                    
                 </div>
 
                 <form @submit.prevent="sendMessage">
