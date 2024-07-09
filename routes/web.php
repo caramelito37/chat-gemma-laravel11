@@ -22,3 +22,11 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+
+use App\Http\Controllers\ChatGemmaController;
+
+Route::get('/chat-gemma', [ChatGemmaController::class, 'index'])->name('chat-gemma')->middleware('auth');
+
+
+
