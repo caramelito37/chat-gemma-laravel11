@@ -22,14 +22,15 @@ class ChatGemmaController extends Controller
         $response = $client->post('http://localhost:7000/translate_and_generate/', [
             'json' => ['text' => $request->input('message')]
         ]);
-
+    
         $responseBody = json_decode($response->getBody(), true);
-
-        return Inertia::render('gemma/index', [
-            'user' => Auth::user()->name,
+    
+        return response()->json([
             'input_text' => $responseBody['input_text'],
-            'model_output' => $responseBody['model_output']
+            'model_output' => $responseBody['model_output'],
+            'response_time' => $responseBody['response_time'],  // Añadido
         ]);
     }
+    
 
 }
